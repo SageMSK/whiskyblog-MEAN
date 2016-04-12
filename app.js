@@ -23,7 +23,7 @@ db.once('open', () => {
 
 const routes = require('./routes/index');
 const users = require('./routes/users');
-const journalRouter = require('./routes/journalRouter');
+const reviewRouter = require('./routes/reviewRouter');
 
 const app = express();
 
@@ -41,7 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/whiskies', journalRouter);
+app.use('/whiskies', reviewRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

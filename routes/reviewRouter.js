@@ -38,9 +38,10 @@ whiskyReviewRouter.route('/')
 
 .delete((req, res, next) => {
 
-  Reviews.remove({}, (err, whiskyReviews) => {
+  Reviews.remove({}, (err, removed) => {
     assert.equal(null, err);
-    res.json(whiskyReviews);
+    res.json(removed);
+    console.log('Deleting ALL whisky reviews!');
   })
 
 });
@@ -52,7 +53,7 @@ whiskyReviewRouter.route('/:whiskyId')
     assert.equal(null, err);
     res.json(whiskyReview);
 
-    res.end(`Getting whisky blog with id: ${req.params.whiskyId}!`);
+    res.end(`Getting whisky review with id: ${req.params.whiskyId}!`);
   });
 
 })
@@ -62,18 +63,18 @@ whiskyReviewRouter.route('/:whiskyId')
   Reviews.findByIdAndUpdate(req.params.whiskyId, {$set: req.body}, {new: true}, (err, whiskyReview) => {
     assert.equal(null, err);
     res.json(whiskyReview);
+    console.log(`Finished updating whisky review with id: ${req.params.whiskyId}!`);
   });
 
 })
 
 .delete((req, res, next) => {
 
-  Reviews.remove(req.params.whiskyId, (err, whiskyReview) => {
+  Reviews.remove(req.params.whiskyId, (err, removed) => {
     assert.equal(null, err);
-    res.json(whiskyReview);
-    res.end(`Deleting whisky blog with id: ${req.params.whiskyId}!`);
+    res.json(removed);
+    console.log(`Deleted whisky id: ${req.params.whiskyId}!`);
   });
-
 });
 
 module.exports = whiskyReviewRouter;
