@@ -6,11 +6,11 @@ const express = require('express'),
       assert = require('assert');
 
 const Reviews = require('../models/reviews');
-const whiskyJournalRouter = express.Router();
+const whiskyReviewRouter = express.Router();
 
-whiskyJournalRouter.use(bodyParser.json());
+whiskyReviewRouter.use(bodyParser.json());
 
-whiskyJournalRouter.route('/')
+whiskyReviewRouter.route('/')
 .get((req, res, next) => {
 
   Reviews.find({}, (err, whiskyReviews) => {
@@ -45,23 +45,35 @@ whiskyJournalRouter.route('/')
 
 });
 
-whiskyJournalRouter.route('/:whiskyId')
+whiskyReviewRouter.route('/:whiskyId')
 .get((req, res, next) => {
 
-  res.end(`Getting whisky blog with id: ${req.params.whiskyId}!`);
+  Reviews.findById(req.params.whiskyId, (err, whiskyReview) => {
+    assert.equal(null, err);
+    res.json(whiskyReview);
+
+    res.end(`Getting whisky blog with id: ${req.params.whiskyId}!`);
+  });
 
 })
 
 .put((req, res, next) => {
-
-  res.end('Editing the current whisky!');
+  // new is false by default and MongoDB will return the doc as it was before the update operation was applied.
+  Reviews.findByIdAndUpdate(req.params.whiskyId, {$set: req.body}, {new: true}, (err, whiskyReview) => {
+    assert.equal(null, err);
+    res.json(whiskyReview);
+  });
 
 })
 
 .delete((req, res, next) => {
 
-  res.end(`Deleting whisky blog with id: ${req.params.whiskyId}!`);
+  Reviews.remove(req.params.whiskyId, (err, whiskyReview) => {
+    assert.equal(null, err);
+    res.json(whiskyReview);
+    res.end(`Deleting whisky blog with id: ${req.params.whiskyId}!`);
+  });
 
 });
 
-module.exports = whiskyJournalRouter;
+module.exports = whiskyReviewRouter;
