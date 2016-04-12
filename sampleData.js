@@ -3,7 +3,8 @@
 {
     "name": "Highland Park 12 years",
     "image": "images/highlandpark12.png",
-    "price": "36.16",
+    "price": 36.16,
+    "year": 12,
     "nose": "Fresh, clean and very aromatic. Floral notes abound the senses with a light grassiness. Notes of creamy manuka honey and a touch of juicy citrus with cream and a well-balanced sweetness.",
     "taste": "Rather full with a pleasant subtlety to the depths. Lurking somewhere in the substratum a grilled orange lies. Notes of granary toast and green tea with jasmine. A touch of sweetness.",
     "finish": "Quite long with peppered spicy and wood shavings.",
@@ -13,7 +14,8 @@
 {
     "name": "Lagavulin 16 Year Old",
     "image": "images/lagavulin16.png",
-    "price": "5.38",
+    "price": 55.38,
+    "year": 16,
     "nose": "More like Lapsang Souchong tea than Lapsang Souchong! One of the smokiest noses from Islay. It's big, very, very concentrated, and redolent of iodine, sweet spices, good, mature sherry and creamy vanilla. Stunning.",
     "taste": "Very thick and rich. A massive mouthful of malt and sherry with good fruity sweetness, but also a wonderful sweetness. Big, powerful peat and oak.",
     "finish": "Long, spicy finish, figs, dates, peat smoke, vanilla.",

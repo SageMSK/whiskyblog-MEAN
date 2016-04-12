@@ -1,5 +1,5 @@
-'use strict'; // mongod.exe --dbpath C:\Users\minsookim\Desktop\whiskyblog\data
-// C:\Program Files\MongoDB\Server\3.2\bin
+'use strict';
+
 const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
@@ -9,6 +9,9 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
 // MongoDB/Mongoose
+// Starting the localhost server
+// C:\Program Files\MongoDB\Server\3.2\bin
+// mongod.exe --dbpath C:\Users\minsookim\Desktop\whiskyblog\data
 const url = 'mongodb://localhost:27017/whiskyblog';
 mongoose.connect(url);
 const db = mongoose.connection;
@@ -54,7 +57,7 @@ app.use((req, res, next) => {
 if (app.get('env') === 'development') {
   app.use((err, req, res, next) => {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       message: err.message,
       error: err
     });
@@ -65,7 +68,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json({
     message: err.message,
     error: {}
   });

@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create the schema
-const journalSchema = new Schema({
+const reviewSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -42,7 +42,7 @@ const journalSchema = new Schema({
 });
 
 // create the model
-const Journals = mongoose.model('Journal', journalSchema);
+const Review = mongoose.model('Review', reviewSchema);
 
 // export the module
-module.exports = Journals;
+module.exports = Review;
