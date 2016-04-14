@@ -13,7 +13,7 @@ angular.module('myApp')
         },
         'content': {
           templateUrl: 'views/home.html',
-          controller: 'MainController'
+          controller: 'HomeController'
         },
         'footer': {
         templateUrl: 'views/footer.html'
@@ -49,7 +49,7 @@ angular.module('myApp')
       views: {
         'content@': {
           templateUrl: 'views/whiskies.html',
-          controller: 'MainController'
+          controller: 'whiskyController'
         }
       }
     })
@@ -61,6 +61,16 @@ angular.module('myApp')
         'content@': {
           templateUrl: 'views/whiskyDetail.html',
           controller: 'whiskyDetailController'
+        }
+      }
+    })
+
+    .state('app.newpost', {
+      url: 'newpost',
+      views: {
+        'content@': {
+          templateUrl: 'views/submitReview.html',
+          controller: 'submitReviewController'
         }
       }
     });

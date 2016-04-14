@@ -1,11 +1,14 @@
-<div class="container" ng-controller="MainController">
-    <h3>Check out some whiskies below.</h3>
-<!-- "col-sm-6 col-md-4" -->
+<div class="container whiskiesPage" ng-controller="whiskyController">
+  <a ui-sref="app.newpost" class="btn btn-primary">Submit New Review</a>
+
+  <h3>Current Favorites</h3>
+
+  <!-- "col-sm-6 col-md-4" -->
   <div class="topWhisky">
     <div class="row">
       <div class="col-md-4" ng-repeat="whisky in whiskies">
         <div class="thumbnail">
-          <img ng-src="{{whisky.image}}" alt="{{whisky.name}}" class="frontPageImages">
+          <img ng-src="{{whisky.image}}" alt="{{whisky.name}}">
           <div class="caption">
             <h3>{{whisky.name}}</h3>
             <p>{{whisky.description}}</p>
@@ -14,6 +17,24 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <a ui-sref="app.newpost" class="btn btn-xs btn-primary pull-right">Submit New Review</a>
+    <h4>Show All</h4>
+
+    <ul>
+      <li ng-repeat="whisky in whiskyLists">
+        <p>{{whisky.name}}</p>
+        <p>Description: {{whisky.description}}</p>
+        <p>Nose: {{whisky.nose}}</p>
+        <p>Taste: {{whisky.taste}}</p>
+        <p>Finish: {{whisky.finish}}</p>
+        <p>Submitted On: {{whisky.date | date:"mediumDate"}}</p>
+      </li>
+    </ul>
   </div>
 
 </div><!-- /.container -->

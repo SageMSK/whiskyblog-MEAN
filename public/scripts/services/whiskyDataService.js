@@ -2,7 +2,7 @@
 
 angular.module('myApp')
 
-.factory('whiskyFactory', () => {
+.factory('fpWhiskyFactory', () => {
 
   let whiskyFac = {};
 
@@ -51,4 +51,33 @@ angular.module('myApp')
   };
 
   return whiskyFac;
+})
+
+.factory('ReviewFactory', () => {
+  let reviewFac = {};
+
+  let listWhisky = [
+    {
+      _id: 0,
+      name: "Yamazaki 12 Year Old",
+      image: "images/lqc.jpg",
+      price: 106.22,
+      year: 12,
+      nose: "Good body with plenty of nut oils and zest, a pleasant floral character with a little tropical fruit and a rooty note.",
+      taste: "Smooth and soft with good sweetness and winter spice. A lovely citrus note develops with more tropical fruit notes and a little rum.",
+      finish: "Medium length, but becomes fruity, with custard and cigar smoke.",
+      description: "This 12 year old from Yamazaki first came onto the market in 1984 and was the first seriously marketed Japanese single malt whisky. Source: masterofmalt.com",
+      date: new Date().toISOString()
+    }
+  ];
+
+  reviewFac.getList = () => {
+    return listWhisky;
+  };
+
+  reviewFac.getListItem = (index) => {
+    return listWhisky[index];
+  };
+
+  return reviewFac;
 });

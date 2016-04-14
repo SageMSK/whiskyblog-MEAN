@@ -1,0 +1,47 @@
+<div class="container" ng-controller="submitReviewController">
+
+  <a ui-sref="app.whiskies" class="btn btn-s btn-primary">Back</a>
+
+  <h1>Submit New Post</h1>
+
+  <div class="reviewForm">
+
+    <form name="reviewForm" ng-submit="submitReview()" novalidate>
+      <div class="form-group">
+        <label for="name">Name of Whisky</label>
+        <input type="text" class="form-control" name="name" placeholder="Whisky Name" ng-model="review.name">
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image (optional)</label>
+        <input type="text" class="form-control" name="image" placeholder="Whisky Image" ng-model="review.image">
+      </div>
+
+      <div class="form-group">
+        <label for="year">How old is the Whisky?</label>
+        <input type="text" class="form-control" name="year" placeholder="E.g. 12" ng-model="review.year">
+      </div>
+
+      <div class="form-group">
+        <label for="nose">Nose</label>
+        <input type="text" class="form-control" name="nose" placeholder="Nose" ng-model="review.nose">
+      </div>
+
+      <div class="form-group">
+        <label for="taste">Taste</label>
+        <input type="text" class="form-control" name="taste" placeholder="Taste" ng-model="review.taste">
+      </div>
+
+      <div class="form-group">
+        <label for="finish">Finish</label>
+        <input type="text" class="form-control" name="finish" placeholder="Finish" ng-model="review.finish">
+      </div>
+
+      <textarea class="form-control" rows="5" name="description" placeholder="Description" ng-model="review.description"></textarea>
+
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>
