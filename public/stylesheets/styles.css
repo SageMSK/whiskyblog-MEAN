@@ -1,0 +1,28 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.jumbotron {
+  text-align: center;
+}
+
+.whiskyDetailPage {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.details {
+  text-align: left;
+}
+
+.container h3 {
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+}
