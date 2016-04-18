@@ -48,6 +48,7 @@ angular.module('myApp')
       .then((data) => {
         $scope.whisky = data.data;
         console.log(data);
+        alert(`Review ID: ${whiskyID} has been removed.`)
       }, (err) => {
         console.log(`Error: ${err}`);
       })

@@ -4,5 +4,6 @@ node_modules
 # Ignore mongodb data folder
 data
 
-$ Ignore npm-debugs
+$ Ignore npm-debugs and others
 npm-debug.log
+debug.log

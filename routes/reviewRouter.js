@@ -70,7 +70,7 @@ whiskyReviewRouter.route('/:whiskyId')
 
 .delete((req, res, next) => {
 
-  Reviews.remove(req.params.whiskyId, (err, removed) => {
+  Reviews.remove({_id: req.params.whiskyId}, (err, removed) => {
     assert.equal(null, err);
     res.json(removed);
     console.log(`Deleted whisky id: ${req.params.whiskyId}!`);

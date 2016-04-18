@@ -9,43 +9,43 @@
     <form name="reviewForm" ng-submit="submitReview()" novalidate>
       <div class="form-group">
         <label for="name">Name of Whisky</label>
-        <input type="text" class="form-control" name="name" placeholder="Whisky Name" ng-model="review.name">
+        <input type="text" class="form-control" name="name" placeholder="Whisky Name" ng-model="review.name" required>
       </div>
 
       <div class="form-group">
         <label for="image">Image (optional)</label>
-        <input type="text" class="form-control" name="image" placeholder="Whisky Image" ng-model="review.image">
+        <input type="text" class="form-control" name="image" placeholder="Whisky Image" ng-model="review.image" required>
       </div>
 
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" class="form-control" name="price" placeholder="E.g. 49.99" ng-model="review.price">
+        <input type="text" class="form-control" name="price" placeholder="E.g. 49.99" ng-model="review.price" required>
       </div>
 
       <div class="form-group">
         <label for="year">How old is the Whisky?</label>
-        <input type="text" class="form-control" name="year" placeholder="E.g. 12" ng-model="review.year">
+        <input type="text" class="form-control" name="year" placeholder="E.g. 12" ng-model="review.year" required>
       </div>
 
       <div class="form-group">
         <label for="nose">Nose</label>
-        <input type="text" class="form-control" name="nose" placeholder="Nose" ng-model="review.nose">
+        <input type="text" class="form-control" name="nose" placeholder="Nose" ng-model="review.nose" required>
       </div>
 
       <div class="form-group">
         <label for="taste">Taste</label>
-        <input type="text" class="form-control" name="taste" placeholder="Taste" ng-model="review.taste">
+        <input type="text" class="form-control" name="taste" placeholder="Taste" ng-model="review.taste" required>
       </div>
 
       <div class="form-group">
         <label for="finish">Finish</label>
-        <input type="text" class="form-control" name="finish" placeholder="Finish" ng-model="review.finish">
+        <input type="text" class="form-control" name="finish" placeholder="Finish" ng-model="review.finish" required>
       </div>
 
-      <textarea class="form-control" rows="5" name="description" placeholder="Description" ng-model="review.description"></textarea>
+      <textarea class="form-control" rows="5" name="description" placeholder="Description" ng-model="review.description" required></textarea>
 
       <br>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" ng-disabled="reviewForm.$invalid">Submit</button>
     </form>
 
   </div>
