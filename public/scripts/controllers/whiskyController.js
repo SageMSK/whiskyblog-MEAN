@@ -8,50 +8,71 @@ angular.module('myApp')
 
 }])
 
-.controller('whiskyController', ['$scope', 'fpWhiskyFactory', 'ReviewFactory', ($scope, fpWhiskyFactory, ReviewFactory) => {
+.controller('whiskyController', ['$scope', '$http','fpWhiskyFactory', 'ReviewFactory', ($scope, $http, fpWhiskyFactory, ReviewFactory) => {
+
+  $scope.whiskyLists = [];
 
   $scope.whiskies = fpWhiskyFactory.getWhiskies();
-  $scope.whiskyLists = ReviewFactory.getList();
+
+  $http.get('/whiskies')
+    .then((data) => {
+      $scope.whiskyLists = data.data;
+      console.log(data.data);
+    }, (err) => {
+      console.log(`Error: ${err}`);
+    })
 
 }])
 
-.controller('whiskyDetailController', ['$scope', '$stateParams', 'fpWhiskyFactory', ($scope, $stateParams, fpWhiskyFactory) => {
+.controller('whiskyDetailController', ['$scope', '$http', '$stateParams', 'fpWhiskyFactory', ($scope, $http, $stateParams, fpWhiskyFactory) => {
 
-  $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
+  // $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
+  $scope.whisky;
+
+  $http.get('/whiskies/' + ($stateParams.id))
+    .then((data) => {
+      $scope.whisky = data.data;
+      console.log(data);
+    }, (err) => {
+      console.log(`Error: ${err}`);
+    })
 
 }])
 
-.controller('submitReviewController', ['$scope', 'ReviewFactory', ($scope, ReviewFactory) => {
-
-  $scope.listWhisky = ReviewFactory.getList();
+.controller('submitReviewController', ['$scope', '$http', 'ReviewFactory', ($scope, $http, ReviewFactory) => {
 
   $scope.review = {
     name: '',
     image: '',
+    price: '',
     year: '',
     nose: '',
     taste: '',
     finish: '',
-    description: '',
-    date: ''
-  }
+    description: ''
+  };
 
   $scope.submitReview = () => {
 
-    $scope.review.date = new Date().toISOString();
     console.log($scope.review);
-    $scope.listWhisky.push($scope.review);
 
-    $scope.review = {
-      name: '',
-      image: '',
-      year: '',
-      nose: '',
-      taste: '',
-      finish: '',
-      description: '',
-      date: ''
-    }
+    $http.post('/whiskies', $scope.review)
+      .then((data) => {
+        $scope.review = {
+          name: '',
+          image: '',
+          price: '',
+          year: '',
+          nose: '',
+          taste: '',
+          finish: '',
+          description: ''
+        };
+      }, (err) => {
+        console.log(`Error: ${err}`);
+      });
+
+    alert('Review Added');
 
   };
 
