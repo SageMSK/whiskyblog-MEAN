@@ -27,6 +27,7 @@
 
     <ul>
       <li ng-repeat="whisky in whiskyLists">
+        <p><a ui-sref="app.whiskydetails({id: whisky._id})">{{whisky.name}}</a></p>
         <p>{{whisky.name}}</p>
         <p>Description: {{whisky.description}}</p>
         <p>Nose: {{whisky.nose}}</p>

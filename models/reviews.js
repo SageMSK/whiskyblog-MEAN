@@ -12,7 +12,8 @@ const reviewSchema = new Schema({
     unique: true
   },
   image: {
-    type: String
+    type: String,
+    required: true
   },
   price: {
     type: String,

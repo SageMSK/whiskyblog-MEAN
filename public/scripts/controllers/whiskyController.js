@@ -26,16 +26,32 @@ angular.module('myApp')
 
 .controller('whiskyDetailController', ['$scope', '$http', '$stateParams', 'fpWhiskyFactory', ($scope, $http, $stateParams, fpWhiskyFactory) => {
 
-  // $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
   $scope.whisky;
+  // $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
+  let whiskyID = $stateParams.id;
 
-  $http.get('/whiskies/' + ($stateParams.id))
-    .then((data) => {
-      $scope.whisky = data.data;
-      console.log(data);
-    }, (err) => {
-      console.log(`Error: ${err}`);
-    })
+  if (Number(whiskyID) < 10) {
+    $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
+  }
+  else {
+    $http.get(`/whiskies/${whiskyID}`)
+      .then((data) => {
+        $scope.whisky = data.data;
+        console.log(data);
+      }, (err) => {
+        console.log(`Error: ${err}`);
+      })
+  }
+
+  $scope.deleteReview = () => {
+    $http.delete(`/whiskies/${whiskyID}`)
+      .then((data) => {
+        $scope.whisky = data.data;
+        console.log(data);
+      }, (err) => {
+        console.log(`Error: ${err}`);
+      })
+  };
 
 }])
 
