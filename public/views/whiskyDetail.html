@@ -1,20 +1,32 @@
 <div class="container">
   <button type="button" class="btn btn-xs btn-primary pull-right" ui-sref="app.whiskies">Back to List</button>
   <div class="whiskyDetailPage" ng-controller="whiskyDetailController">
-    <h1>Whisky Detail's Page</h1>
 
     <button type="button" class="btn btn-danger pull-right" ng-click="deleteReview()">Delete</button>
     <button type="button" class="btn btn-primary pull-right">Edit</button>
 
-    <div class="details">
-      <img ng-src="{{whisky.image}}" alt="{{whisky.name}}" />
+    <div class="media details">
       <h2>{{whisky.name}}</h2>
-      <p>{{whisky.description}}</p>
-      <p>$ {{whisky.price}}</p>
-      <p>How old? {{whisky.year}}</p>
-      <p><strong>Nose: </strong>{{whisky.nose}}</p>
-      <p><strong>Taste: </strong>{{whisky.taste}}</p>
-      <p><strong>Finish: </strong>{{whisky.finish}}</p>
+      <div class="media-left">
+        <img class="media-object" ng-src="{{whisky.image}}" alt="{{whisky.name}}">
+      </div>
+      <div class="media-body">
+        <div class="info">
+          <p>{{whisky.description}}</p>
+          <p>Price: ${{whisky.price}}</p>
+          <p>ABV: {{whisky.abv}}%</p>
+          <p>Alcohol Proof: {{whisky.abv * 2}}</p>
+          <p>How old? {{whisky.year}}</p>
+        </div>
+
+        <div class="flavor well">
+          <p><strong>Nose: </strong>{{whisky.nose}}</p>
+          <p><strong>Taste: </strong>{{whisky.taste}}</p>
+          <p><strong>Finish: </strong>{{whisky.finish}}</p>
+        </div>
+
+        <p>Posted On: {{whisky.createdAt | date:"mediumDate"}}</p>
+      </div>
     </div>
   </div>
 

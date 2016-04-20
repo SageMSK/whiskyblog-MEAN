@@ -15,6 +15,10 @@ const reviewSchema = new Schema({
     type: String,
     required: true
   },
+  abv: {
+    type: String,
+    required: true
+  },
   price: {
     type: String,
     required: true

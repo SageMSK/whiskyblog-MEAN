@@ -9,12 +9,17 @@
     <form name="reviewForm" ng-submit="submitReview()" novalidate>
       <div class="form-group">
         <label for="name">Name of Whisky</label>
-        <input type="text" class="form-control" name="name" placeholder="Whisky Name" ng-model="review.name" required>
+        <input type="text" class="form-control" name="name" placeholder="E.g. Lagavulin 16 Year Old" ng-model="review.name" required>
       </div>
 
       <div class="form-group">
         <label for="image">Image (optional)</label>
         <input type="text" class="form-control" name="image" placeholder="Whisky Image" ng-model="review.image" required>
+      </div>
+
+      <div class="form-group">
+        <label for="abv">ABV (% is already implied)</label>
+        <input type="text" class="form-control" name="abv" placeholder="E.g. ABV: 40, Half of Alcohol Proof" ng-model="review.abv" required>
       </div>
 
       <div class="form-group">
@@ -42,7 +47,7 @@
         <input type="text" class="form-control" name="finish" placeholder="Finish" ng-model="review.finish" required>
       </div>
 
-      <textarea class="form-control" rows="5" name="description" placeholder="Description" ng-model="review.description" required></textarea>
+      <textarea class="form-control" rows="5" name="description" placeholder="Description or Addition Information" ng-model="review.description" required></textarea>
 
       <br>
       <button type="submit" class="btn btn-primary" ng-disabled="reviewForm.$invalid">Submit</button>

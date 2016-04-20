@@ -22,18 +22,25 @@
   <hr>
 
   <div class="row">
-    <a ui-sref="app.newpost" class="btn btn-xs btn-primary pull-right">Submit New Review</a>
     <h4>Show All</h4>
+    <div class="pull-right">
+      <span>Filter By:</span>
+      <select ng-model="sortByStuff">
+        <option value="None">-- Select --</option>
+        <option value="name">A-Z</option>
+        <option value="year">By Year</option>
+      </select>
+    </div>
 
     <ul>
-      <li ng-repeat="whisky in whiskyLists">
+      <li ng-repeat="whisky in whiskyLists | orderBy: sortByStuff">
         <p><a ui-sref="app.whiskydetails({id: whisky._id})">{{whisky.name}}</a></p>
         <p>{{whisky.name}}</p>
         <p>Description: {{whisky.description}}</p>
         <p>Nose: {{whisky.nose}}</p>
         <p>Taste: {{whisky.taste}}</p>
         <p>Finish: {{whisky.finish}}</p>
-        <p>Submitted On: {{whisky.createdAt | date:"mediumDate"}}</p>
+        <p>Review Posted On: {{whisky.createdAt | date:"mediumDate"}}</p>
       </li>
     </ul>
   </div>

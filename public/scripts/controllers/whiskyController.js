@@ -8,8 +8,9 @@ angular.module('myApp')
 
 }])
 
-.controller('whiskyController', ['$scope', '$http','fpWhiskyFactory', 'ReviewFactory', ($scope, $http, fpWhiskyFactory, ReviewFactory) => {
+.controller('whiskyController', ['$scope', '$http','fpWhiskyFactory', ($scope, $http, fpWhiskyFactory) => {
 
+  $scope.sortByStuff = '';
   $scope.whiskyLists = [];
 
   $scope.whiskies = fpWhiskyFactory.getWhiskies();
@@ -27,11 +28,10 @@ angular.module('myApp')
 .controller('whiskyDetailController', ['$scope', '$http', '$stateParams', 'fpWhiskyFactory', ($scope, $http, $stateParams, fpWhiskyFactory) => {
 
   $scope.whisky;
-  // $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
   let whiskyID = $stateParams.id;
 
   if (Number(whiskyID) < 10) {
-    $scope.whisky = fpWhiskyFactory.getWhisky(parseInt($stateParams.id, 10));
+    $scope.whisky = fpWhiskyFactory.getWhisky(parseInt(whiskyID, 10));
   }
   else {
     $http.get(`/whiskies/${whiskyID}`)
@@ -56,11 +56,12 @@ angular.module('myApp')
 
 }])
 
-.controller('submitReviewController', ['$scope', '$http', 'ReviewFactory', ($scope, $http, ReviewFactory) => {
+.controller('submitReviewController', ['$scope', '$http', ($scope, $http) => {
 
   $scope.review = {
     name: '',
     image: '',
+    abv: '',
     price: '',
     year: '',
     nose: '',
@@ -78,6 +79,7 @@ angular.module('myApp')
         $scope.review = {
           name: '',
           image: '',
+          abv: '',
           price: '',
           year: '',
           nose: '',

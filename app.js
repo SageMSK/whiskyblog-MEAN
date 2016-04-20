@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 // MongoDB/Mongoose
 // Starting the localhost server
-// C:\Program Files\MongoDB\Server\3.2\bin
+// cd C:\Program Files\MongoDB\Server\3.2\bin
 // mongod.exe --dbpath C:\Users\minsookim\Desktop\whiskyblog\data
 const url = 'mongodb://localhost:27017/whiskyblog';
 mongoose.connect(url);
