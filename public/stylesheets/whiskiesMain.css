@@ -1,0 +1,15 @@
+/*
+  Whiskies Main Page
+*/
+
+.showWhiskyList h4 {
+  width: auto;
+}
+
+.filterSelect {
+  text-align: right;
+}
+
+.mediaWhiskyList {
+  margin-top: 15px;
+}

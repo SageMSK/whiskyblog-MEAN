@@ -27,3 +27,7 @@ body {
 footer {
   text-align: center;
 }
+
+.media-left img {
+  max-width: 50px;
+}

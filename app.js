@@ -18,7 +18,7 @@ const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection Error: '));
 db.once('open', () => {
   // we're connected!
-  console.log('Connected correctly to server!');
+  console.log('Connected to MongoDB server!');
 });
 
 const routes = require('./routes/index');
