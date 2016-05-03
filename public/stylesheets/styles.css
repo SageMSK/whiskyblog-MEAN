@@ -1,3 +1,7 @@
+/*
+  HOMEPAGE
+----------------------------------*/
+
 body {
   padding-top: 50px;
   background-color: #F5F5F5;
@@ -8,7 +12,25 @@ body {
 }
 
 .jumbotron {
+  color: white;
   text-align: center;
+  background-image: url('../images/glassofwhiskyhp.jpg');
+  background-size: cover;
+  height: 400px;
+}
+
+.jumbotron h1, .jumbotron p {
+  text-shadow: 2px 2px #000000;
+}
+
+.jumbotron a {
+  margin-top: 40px;
+}
+
+.jumbotron .warning {
+  text-align: right;
+  font-size: .9em;
+  margin-top: 100px;
 }
 
 .whiskyDetailPage {
@@ -24,10 +46,32 @@ body {
   text-align: center;
 }
 
-footer {
-  text-align: center;
-}
-
 .media-left img {
   max-width: 50px;
+}
+
+/*
+  FOOTER
+----------------------------------*/
+footer {
+  text-align: center;
+  height: 100px;
+}
+
+/*
+MOBILE
+----------------------------------*/
+@media screen and (max-width: 480px) {
+  .jumbotron {
+      height: 330px;
+  }
+
+  .jumbotron a {
+    margin-top: 20px;
+  }
+
+  .jumbotron .warning {
+    margin-top: 30px;
+    text-align: center;
+  }
 }

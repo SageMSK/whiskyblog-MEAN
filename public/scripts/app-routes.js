@@ -20,7 +20,6 @@ angular.module('myApp')
         }
       }
     })
-
     // route for the about page
     .state('app.about', {
       url: 'about',
@@ -32,7 +31,6 @@ angular.module('myApp')
         }
       }
     })
-
     // route for the request page
     .state('app.request', {
       url: 'request',
@@ -43,7 +41,7 @@ angular.module('myApp')
         }
       }
     })
-
+    // Main whiskies page/list
     .state('app.whiskies', {
       url: 'whiskies',
       views: {
@@ -64,13 +62,33 @@ angular.module('myApp')
         }
       }
     })
-
+    // New Post
     .state('app.newpost', {
       url: 'newpost',
       views: {
         'content@': {
           templateUrl: 'views/submitReview.html',
           controller: 'submitReviewController'
+        }
+      }
+    })
+    // login
+    .state('app.login', {
+      url: 'login',
+      views: {
+        'content@': {
+          templateUrl: 'views/login.html',
+          controller: 'loginController'
+        }
+      }
+    })
+    // register
+    .state('app.register', {
+      url: 'register',
+      views: {
+        'content@': {
+          templateUrl: 'views/register.html',
+          controller: 'registerController'
         }
       }
     });

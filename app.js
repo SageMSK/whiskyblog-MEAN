@@ -1,12 +1,14 @@
 'use strict';
 
-const express = require('express');
-const path = require('path');
-const favicon = require('serve-favicon');
-const logger = require('morgan');
-const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const express = require('express'),
+      path = require('path'),
+      favicon = require('serve-favicon'),
+      logger = require('morgan'),
+      cookieParser = require('cookie-parser'),
+      bodyParser = require('body-parser'),
+      mongoose = require('mongoose')
+      passport = require('passport'),
+      LocalStrategy = require('passport-local').Strategy;
 
 // MongoDB/Mongoose
 // Starting the localhost server

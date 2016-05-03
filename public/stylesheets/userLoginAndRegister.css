@@ -1,0 +1,38 @@
+/*
+  Login and Register StyleSheet
+----------------------------------*/
+
+/*
+  LOGIN
+----------------------------------*/
+.login {
+  width: 400px;
+}
+
+.loginBox {
+  background-color: white;
+  margin-top: 50px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.loginBox label {
+  padding-left: 5px;
+}
+
+/*
+  REGISTER
+----------------------------------*/
+.registerBox {
+  margin-top: 50px;
+}
+
+/*
+  MOBILE
+----------------------------------*/
+@media screen and (max-width: 480px) {
+    .login {
+        width: 300px;
+    }
+}
