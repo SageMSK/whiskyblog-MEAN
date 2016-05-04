@@ -6,7 +6,7 @@ const express = require('express'),
       logger = require('morgan'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
-      mongoose = require('mongoose')
+      mongoose = require('mongoose'),
       passport = require('passport'),
       LocalStrategy = require('passport-local').Strategy;
 

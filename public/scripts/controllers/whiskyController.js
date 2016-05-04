@@ -1,98 +1,102 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('myApp')
+  angular.module('myApp')
 
-.controller('HomeController', ['$scope', 'fpWhiskyFactory', ($scope, fpWhiskyFactory) => {
+  .controller('HomeController', ['$scope', 'fpWhiskyFactory', ($scope, fpWhiskyFactory) => {
 
-  $scope.whiskies = fpWhiskyFactory.getWhiskies();
+    $scope.whiskies = fpWhiskyFactory.getWhiskies();
 
-}])
+  }])
 
-.controller('whiskyController', ['$scope', '$http','fpWhiskyFactory', ($scope, $http, fpWhiskyFactory) => {
+  .controller('whiskyController', ['$scope', '$http','fpWhiskyFactory', ($scope, $http, fpWhiskyFactory) => {
 
-  $scope.sortByStuff = '';
-  $scope.whiskyLists = [];
+    $scope.sortByStuff = '';
+    $scope.whiskyLists = [];
 
-  $scope.whiskies = fpWhiskyFactory.getWhiskies();
+    $scope.whiskies = fpWhiskyFactory.getWhiskies();
 
-  $http.get('/whiskies')
-    .then((data) => {
-      $scope.whiskyLists = data.data;
-      console.log(data.data);
-    }, (err) => {
-      console.log(`Error: ${err}`);
-    })
-
-}])
-
-.controller('whiskyDetailController', ['$scope', '$http', '$stateParams', 'fpWhiskyFactory', ($scope, $http, $stateParams, fpWhiskyFactory) => {
-
-  $scope.whisky;
-  let whiskyID = $stateParams.id;
-
-  if (Number(whiskyID) < 10) {
-    $scope.whisky = fpWhiskyFactory.getWhisky(parseInt(whiskyID, 10));
-  }
-  else {
-    $http.get(`/whiskies/${whiskyID}`)
+    $http.get('/whiskies')
       .then((data) => {
-        $scope.whisky = data.data;
-        console.log(data);
+        $scope.whiskyLists = data.data;
       }, (err) => {
         console.log(`Error: ${err}`);
       })
-  }
 
-  $scope.deleteReview = () => {
-    $http.delete(`/whiskies/${whiskyID}`)
-      .then((data) => {
-        $scope.whisky = data.data;
-        console.log(data);
-        alert(`Review ID: ${whiskyID} has been removed.`)
-      }, (err) => {
-        console.log(`Error: ${err}`);
-      })
-  };
+  }])
 
-}])
+  .controller('whiskyDetailController', ['$scope', '$http', '$stateParams', 'fpWhiskyFactory', ($scope, $http, $stateParams, fpWhiskyFactory) => {
 
-.controller('submitReviewController', ['$scope', '$http', ($scope, $http) => {
+    $scope.whisky;
+    let whiskyID = $stateParams.id;
 
-  $scope.review = {
-    name: '',
-    image: '',
-    abv: '',
-    price: '',
-    year: '',
-    nose: '',
-    taste: '',
-    finish: '',
-    description: ''
-  };
+    if (Number(whiskyID) < 10) {
+      $scope.whisky = fpWhiskyFactory.getWhisky(parseInt(whiskyID, 10));
+    }
+    else {
+      $http.get(`/whiskies/${whiskyID}`)
+        .then((data) => {
+          $scope.whisky = data.data;
+        }, (err) => {
+          console.log(`Error: ${err}`);
+        })
+    }
 
-  $scope.submitReview = () => {
+    $scope.deleteReview = () => {
+      $http.delete(`/whiskies/${whiskyID}`)
+        .then((data) => {
+          $scope.whisky = data.data;
+          alert(`Review ID: ${whiskyID} has been removed.`)
+        }, (err) => {
+          console.log(`Error: ${err}`);
+        })
+    };
 
-    console.log($scope.review);
+  }])
 
-    $http.post('/whiskies', $scope.review)
-      .then((data) => {
-        $scope.review = {
-          name: '',
-          image: '',
-          abv: '',
-          price: '',
-          year: '',
-          nose: '',
-          taste: '',
-          finish: '',
-          description: ''
-        };
-      }, (err) => {
-        console.log(`Error: ${err}`);
-      });
+  .controller('submitReviewController', ['$scope', '$http', ($scope, $http) => {
 
-    alert('Review Added');
+    $scope.review = {
+      name: '',
+      image: '',
+      abv: '',
+      price: '',
+      year: '',
+      nose: '',
+      taste: '',
+      finish: '',
+      description: ''
+    };
 
-  };
+    $scope.submitReview = () => {
 
-}]);
+      console.log($scope.review);
+
+      $http.post('/whiskies', $scope.review)
+        .then((data) => {
+          $scope.review = {
+            name: '',
+            image: '',
+            abv: '',
+            price: '',
+            year: '',
+            nose: '',
+            taste: '',
+            finish: '',
+            description: ''
+          };
+        }, (err) => {
+          console.log(`Error: ${err}`);
+        });
+
+      alert('Review Added');
+
+    };
+
+  }])
+
+  .controller('editReviewController', ['$scope', ($scope) => {
+    // Edit controller
+    $scope.example = 'Editing Page'
+  }]);
+})();

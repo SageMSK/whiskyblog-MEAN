@@ -3,7 +3,7 @@
   <div class="whiskyDetailPage" ng-controller="whiskyDetailController">
 
     <button type="button" class="btn btn-danger pull-right" ng-click="deleteReview()">Delete</button>
-    <button type="button" class="btn btn-success pull-right">Edit</button>
+    <button type="button" class="btn btn-success pull-right" ui-sref="app.edit">Edit</button>
 
     <div class="media details">
       <h2>{{whisky.name}}</h2>
