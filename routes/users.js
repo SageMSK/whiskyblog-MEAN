@@ -1,11 +1,13 @@
 'use strict';
 
-const express = require('express');
-const router = express.Router();
+const express = require('express'),
+      passport = require('passport'),
+      Account = require('../models/users.js'),
+      userRouter = express.Router();
 
 // Will add users
-router.get('/', (req, res, next) => {
+userRouter.get('/', (req, res, next) => {
   res.send('respond with a resource');
 });
 
-module.exports = router;
+module.exports = userRouter;

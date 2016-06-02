@@ -1,19 +1,29 @@
 'use strict';
 
 // get the modules
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+      Schema = mongoose.Schema,
+      passportLocalMongoose = require('passport-local-mongoose');
 
 // create the schema
 const userSchema = new Schema({
-  name: {
+  username: String,
+  password: String,
+  firstname: {
     type: String,
-    required: true,
-    unique: true
+    default: ''
+  },
+  lastname: {
+    type: String,
+    default: ''
+  },
+  admin: {
+    type: Boolean,
+    default: false
   }
-}, {
-  timestamps: true
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 // create the model
 const User = mongoose.model('User', userSchema);

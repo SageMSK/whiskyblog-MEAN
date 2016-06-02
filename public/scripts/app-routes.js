@@ -21,6 +21,14 @@
           }
         }
       })
+      .state('app.error', {
+        url: 'error',
+        views: {
+          'content@': {
+            templateUrl: 'views/error.html'
+          }
+        }
+      })
       // route for the about page
       .state('app.about', {
         url: 'about',
@@ -29,16 +37,6 @@
           'content@': {
             templateUrl: 'views/about.html'
             // controller: 'AboutController'
-          }
-        }
-      })
-      // route for the request page
-      .state('app.request', {
-        url: 'request',
-        views: {
-          'content@': {
-            templateUrl: 'views/request.html'
-            // controller: 'ContactController'
           }
         }
       })

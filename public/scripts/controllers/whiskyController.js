@@ -46,7 +46,7 @@
       $http.delete(`/whiskies/${whiskyID}`)
         .then((data) => {
           $scope.whisky = data.data;
-          alert(`Review ID: ${whiskyID} has been removed.`)
+          toastr.success(`Review ID: ${whiskyID} has been removed.`)
         }, (err) => {
           console.log(`Error: ${err}`);
         })
@@ -89,7 +89,7 @@
           console.log(`Error: ${err}`);
         });
 
-      alert('Review Added');
+      toastr.success('Review Added');
 
     };
 
