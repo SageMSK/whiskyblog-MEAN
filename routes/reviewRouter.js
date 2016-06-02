@@ -6,12 +6,14 @@ const express = require('express'),
       assert = require('assert');
 
 const Reviews = require('../models/reviews');
+const Verify = require('./verify');
+
 const whiskyReviewRouter = express.Router();
 
 whiskyReviewRouter.use(bodyParser.json());
 
 whiskyReviewRouter.route('/')
-.get((req, res, next) => {
+.get(Verify.verifyOrdinaryUser, (req, res, next) => {
 
   Reviews.find({}, (err, whiskyReviews) => {
     assert.equal(null, err);
@@ -20,7 +22,7 @@ whiskyReviewRouter.route('/')
 
 })
 
-.post((req, res, next) => {
+.post(Verify.verifyOrdinaryUser, (req, res, next) => {
 
   Reviews.create(req.body, (err, whiskyReview) => {
     assert.equal(null, err);
@@ -36,7 +38,7 @@ whiskyReviewRouter.route('/')
 
 })
 
-.delete((req, res, next) => {
+.delete(Verify.verifyOrdinaryUser, (req, res, next) => {
 
   Reviews.remove({}, (err, removed) => {
     assert.equal(null, err);

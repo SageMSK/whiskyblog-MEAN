@@ -7,6 +7,7 @@ const express = require('express'),
       cookieParser = require('cookie-parser'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
+      config = require('./config'),
       passport = require('passport'),
       LocalStrategy = require('passport-local').Strategy;
 
@@ -14,8 +15,7 @@ const express = require('express'),
 // Starting the localhost server
 // cd C:\Program Files\MongoDB\Server\3.2\bin
 // mongod.exe --dbpath C:\Users\minsookim\Desktop\whiskyblog\data
-const url = 'mongodb://localhost:27017/whiskyblog';
-mongoose.connect(url);
+mongoose.connect(config.mongoUrl);
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection Error: '));
 db.once('open', () => {
@@ -31,7 +31,6 @@ const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -39,6 +38,14 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// passport config
+const User = require('./models/users');
+app.use(passport.initialize());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
